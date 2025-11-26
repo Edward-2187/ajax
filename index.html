@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex</title>
+    <link rel="stylesheet" href="css/style.css"
+</head>
+<body>
+   <div class="topbar">
+    <img src="foto/International_Pokémon_logo.svg.png" alt="" height="100" width="300">
+    <span>Pokedex</span>
+</div>
+    <br>
+    <br>   
+<!-- BUSCADOR -->
+<div class="busqueda">
+    <input id="buscarInput" type="text" placeholder="Buscar por nombre o ID">
+    <button onclick="buscarPokemon()">Buscar</button>
+    <button onclick="buscarPorNombre()">Nombre</button>
+</div>
+
+<!-- PAGINACIÓN -->
+<div id="paginacion" class="paginacion"></div>
+
+
+<!-- CONTENEDOR DE POKÉMON -->
+<div id="pokedex" class="grid"></div>
+
+
+
+
+   <script src="js/script.js"></script>
+</body>
+</html>

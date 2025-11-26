@@ -1,0 +1,169 @@
+
+
+
+
+ body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            background-color: #ffffff;
+            text-align: center;
+            /* Color de respaldo */
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url(../foto/pokemon-red-blue-120.jpeg) no-repeat center center fixed;
+            background-size: cover;
+            opacity: 0.3;
+            /* Ajusta la transparencia aquí (0.0 a 1.0) */
+            z-index: -1;
+        }
+
+.topbar {
+    width: 100%;
+    padding: 18px 30px;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    background: linear-gradient(90deg,
+        #17C964,   /* verde */
+        #22A699,   /* turquesa */
+        #357ABD,   /* azul */
+        #5A4FCF    /* violeta */
+    );
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topbar {
+    display: flex;
+    flex-direction: column; /* Imagen arriba, texto abajo */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.topbar img {
+    margin-bottom: 10px; /* espacio entre imagen y texto */
+}
+
+.topbar span {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+
+ /* Buscador */
+    .busqueda {
+        margin-bottom: 20px;
+    }
+    .busqueda input {
+        padding: 10px;
+        width: 280px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+    }
+    .busqueda button {
+        padding: 10px 16px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        background: #3498db;
+        color: white;
+        font-weight: bold;
+        margin-left: 5px;
+    }
+
+
+ /* Grid */
+   .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        padding: 20px;
+        max-width: 1100px;
+        margin: auto;
+    }
+
+    /* Tarjetas */
+    .card {
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+        color: white;
+        text-transform: capitalize;
+        transition: transform 0.2s;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+    }
+
+    .card img {
+        width: 120px;
+        height: 120px;
+    }
+
+ .info {
+        background: rgba(255, 255, 255, 0.25);
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 10px;
+        font-size: 14px;
+    }
+
+/* 🎨 COLORES SEGÚN EL TIPO PRINCIPAL */
+    .type-fire { background: #ff6b6b; }
+    .type-water { background: #4dabf7; }
+    .type-grass { background: #69db7c; }
+    .type-electric { background: #ffd43b; color:black; }
+    .type-psychic { background: #f783ac; }
+    .type-ice { background: #74c0fc; }
+    .type-dragon { background: #9775fa; }
+    .type-dark { background: #495057; }
+    .type-fairy { background: #f7a8e0; }
+    .type-normal { background: #adb5bd; }
+    .type-poison { background: #b197fc; }
+    .type-ground { background: #e9b872; }
+    .type-rock { background: #868e96; }
+    .type-bug { background: #a9d34f; }
+    .type-fighting { background: #e8590c; }
+    .type-ghost { background: #748ffc; }
+    .type-steel { background: #a5b2bd; }
+    .type-flying { background: #a5d8ff; }
+
+
+
+
+ /* Paginación */
+    .paginacion {
+        margin-top: 20px;
+    }
+    .paginacion button {
+        padding: 8px 14px;
+        margin: 4px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        background: #3498db;
+        color: white;
+    }
+    .activo {
+        background: #e74c3c !important;
+    }
+
+
+
+
