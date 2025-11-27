@@ -32,8 +32,8 @@ async function cargarPokedex(pagina = 1) {
         card.classList.add("card", obtenerClaseTipo(tipoPrincipal));
 
         card.innerHTML = `
-            <h2>${p.name}</h2>
-            <img src="${p.sprites.front_default}" alt="${p.name}">
+    <h2>${p.name}</h2>
+    <img src="${p.sprites.front_default}" alt="${p.name}" onclick="mostrarDetalle(${p.id})" style="cursor:pointer;">
             <p><strong>Altura:</strong> ${p.height}</p>
             <p><strong>Peso:</strong> ${p.weight}</p>
             <p><strong>Tipo:</strong> ${p.types.map(t => t.type.name).join(", ")}</p>
@@ -65,37 +65,41 @@ function generarPaginacion() {
 }
 
 // BUSCAR por texto
-async function buscarPokemon() {
-    const q = document.getElementById("buscarInput").value.toLowerCase().trim();
-    if (q === "") return;
-
+async function mostrarDetalle(id) {
     const contenedor = document.getElementById("pokedex");
     contenedor.innerHTML = "";
 
-    try {
-        const p = await obtenerPokemon(q);
+    const p = await obtenerPokemon(id);
+    const tipoPrincipal = p.types[0].type.name;
+    const likeState = localStorage.getItem("like-" + p.id);
 
-        const tipoPrincipal = p.types[0].type.name;
+    const card = document.createElement("div");
+    card.classList.add("card", obtenerClaseTipo(tipoPrincipal));
 
-        const card = document.createElement("div");
-        card.classList.add("card", obtenerClaseTipo(tipoPrincipal));
+    card.innerHTML = `
+        <h2>${p.name}</h2>
+        <img src="${p.sprites.front_default}" alt="${p.name}">
+        <p><strong>Altura:</strong> ${p.height}</p>
+        <p><strong>Peso:</strong> ${p.weight}</p>
+        <p><strong>Tipo:</strong> ${p.types.map(t => t.type.name).join(", ")}</p>
 
-        card.innerHTML = `
-            <h2>${p.name}</h2>
-            <img src="${p.sprites.front_default}">
-            <p><strong>Altura:</strong> ${p.height}</p>
-            <p><strong>Peso:</strong> ${p.weight}</p>
-            <p><strong>Tipo:</strong> ${p.types.map(t => t.type.name).join(", ")}</p>
-        `;
+        <div class="like-buttons">
+            <button class="btn-like ${likeState === "like" ? "btn-selected" : ""}"
+                onclick="marcarLike(${p.id}, 'like')">👍 Me gusta</button>
 
-        contenedor.appendChild(card);
+            <button class="btn-dislike ${likeState === "dislike" ? "btn-selected" : ""}"
+                onclick="marcarLike(${p.id}, 'dislike')">👎 No me gusta</button>
+        </div>
 
-        document.getElementById("paginacion").innerHTML = "";
+        <br>
+        <button onclick="cargarPokedex(${paginaActual})">🔙 Volver</button>
+    `;
 
-    } catch {
-        contenedor.innerHTML = "<h2>No encontrado</h2>";
-    }
+    contenedor.appendChild(card);
+    document.getElementById("paginacion").innerHTML = "";
 }
+
+    
 
 // Botón NOMBRE (pide nombre y busca)
 function buscarPorNombre() {
@@ -107,3 +111,21 @@ function buscarPorNombre() {
 }
 
 cargarPokedex();
+
+
+function marcarLike(id, accion) {
+    localStorage.setItem("like-" + id, accion);
+
+    if (accion === "like") {
+        alert("¡Te gusta este Pokémon! 😄");
+    } else {
+        alert("No te gusta este Pokémon 😢");
+    }
+
+    cargarPokedex(paginaActual);
+}
+
+
+
+
+
